@@ -9,7 +9,7 @@ Currently, the source code is stored in two locations:
 
 1. **Lehre Server:**  
    - Path: `go29key/public_html`  
-   - Recommended for starting servers, as the event stream is correctly set up here.  
+   - Recommended for starting servers, as the event stream is correctly set up there.  
 
 2. **GitHub Repository:**  
    - Used for source code storage.  
