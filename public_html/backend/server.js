@@ -464,22 +464,27 @@ app.get("/api/instances", (req, res) => {
 // Endpoint 8: API to read files for a given instanceId
 app.get("/api/readFile/:instanceId", (req, res) => {
   const instanceId = String(req.params.instanceId);
-  const instanceFolderPath = path.join(__dirname, "instanceData", instanceId, "archived");
+  //const instanceFolderPath = path.join(__dirname, "instanceData", instanceId, "archived");
+  const archivedFolderPath = path.join(__dirname, "instanceData", instanceId, "archived");
+  const instanceFolderPath = path.join(__dirname, "instanceData", instanceId);
 
-  console.log(`🔎 Checking folder: ${instanceFolderPath}`);
+  console.log(`🔎 Checking folder: ${archivedFolderPath}`);
 
   // Ensure the folder exists
-  if (!fs.existsSync(instanceFolderPath)) {
-    console.error(`❌ Archived folder not found: ${instanceFolderPath}`);
-    return res.status(404).json({ error: `Archived folder for instance ${instanceId} not found` });
+  if (fs.existsSync(archivedFolderPath)) {
+    console.log(`✔️ Archived folder found: ${archivedFolderPath}`);
+    files = fs.readdirSync(archivedFolderPath).filter(file => file.endsWith(".json"));
+    // return res.status(404).json({ error: `Archived folder for instance ${instanceId} not found` });
+  } else {
+    console.warn(`⚠️ Archived folder not found. Reading files directly from instance folder: ${instanceFolderPath}`);
+    // Get all JSON files in the instance folder if archived folder doesn't exist
+    files = fs.readdirSync(instanceFolderPath).filter(file => file.endsWith(".json"));
   }
 
   // Get all JSON files in the folder
-  const files = fs.readdirSync(instanceFolderPath).filter(file => file.endsWith(".json"));
-
   if (files.length === 0) {
-    console.warn(`⚠️ No JSON files found in: ${instanceFolderPath}`);
-    return res.json({ message: `No archived files found for instance ${instanceId}` });
+    console.warn(`⚠️ No JSON files found in: ${archivedFolderPath || instanceFolderPath}`);
+    return res.json({ message: `No JSON files found for instance ${instanceId}` });
   }
 
   let structuredResponse = {
@@ -491,7 +496,7 @@ app.get("/api/readFile/:instanceId", (req, res) => {
 
   try {
     files.forEach((file) => {
-      const filePath = path.join(instanceFolderPath, file);
+      const filePath = fs.existsSync(archivedFolderPath) ? path.join(archivedFolderPath, file) : path.join(instanceFolderPath, file);
       let fileContent;
 
       // Ensure JSON is parsed safely
