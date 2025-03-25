@@ -469,6 +469,7 @@ app.get("/api/readFile/:instanceId", (req, res) => {
   const instanceFolderPath = path.join(__dirname, "instanceData", instanceId);
 
   console.log(`🔎 Checking folder: ${archivedFolderPath}`);
+  let files = [];
 
   // Ensure the folder exists
   if (fs.existsSync(archivedFolderPath)) {
