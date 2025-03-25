@@ -1,0 +1,229 @@
+{
+  "cpee": "https://cpee.org/flow/engine/",
+  "instance-url": "https://cpee.org/flow/engine/53051",
+  "instance": 53051,
+  "topic": "stream",
+  "type": "event",
+  "name": "extraction",
+  "timestamp": "2025-03-24T17:42:52.405161+01:00",
+  "content": {
+    "activity-uuid": "4c7d143e611d0d4e33b8cc16b9f9f1e0",
+    "endpoint": "https://lehre.bpm.in.tum.de/ports/16067/api/getElectricityDemand",
+    "label": "get Electricity Demand (Provide City/State Code: FLA (Florida), New York (NY), California (CAL), Texas (TEX) ",
+    "activity": "a5",
+    "changed": [
+      "demandResponses",
+      "foreDemand",
+      "currDemand"
+    ],
+    "values": {
+      "demandResponses": {
+        "status": "Success",
+        "currDemand": 25888,
+        "foreDemand": 24677,
+        "data": {
+          "hourlyData": [
+            {
+              "p": "00:00",
+              "tp": "D",
+              "vl": 25745
+            },
+            {
+              "p": "00:00",
+              "tp": "DF",
+              "vl": 22567
+            },
+            {
+              "p": "01:00",
+              "tp": "D",
+              "vl": 25645
+            },
+            {
+              "p": "01:00",
+              "tp": "DF",
+              "vl": 25129
+            },
+            {
+              "p": "02:00",
+              "tp": "D",
+              "vl": 26465
+            },
+            {
+              "p": "02:00",
+              "tp": "DF",
+              "vl": 27848
+            },
+            {
+              "p": "03:00",
+              "tp": "D",
+              "vl": 28336
+            },
+            {
+              "p": "03:00",
+              "tp": "DF",
+              "vl": 29614
+            },
+            {
+              "p": "04:00",
+              "tp": "D",
+              "vl": 29725
+            },
+            {
+              "p": "04:00",
+              "tp": "DF",
+              "vl": 29563
+            },
+            {
+              "p": "05:00",
+              "tp": "D",
+              "vl": 29456
+            },
+            {
+              "p": "05:00",
+              "tp": "DF",
+              "vl": 28923
+            },
+            {
+              "p": "06:00",
+              "tp": "D",
+              "vl": 28924
+            },
+            {
+              "p": "06:00",
+              "tp": "DF",
+              "vl": 27628
+            },
+            {
+              "p": "07:00",
+              "tp": "D",
+              "vl": 27893
+            },
+            {
+              "p": "07:00",
+              "tp": "DF",
+              "vl": 26138
+            },
+            {
+              "p": "08:00",
+              "tp": "D",
+              "vl": 26787
+            },
+            {
+              "p": "08:00",
+              "tp": "DF",
+              "vl": 25206
+            },
+            {
+              "p": "09:00",
+              "tp": "D",
+              "vl": 25770
+            },
+            {
+              "p": "09:00",
+              "tp": "DF",
+              "vl": 24268
+            },
+            {
+              "p": "10:00",
+              "tp": "D",
+              "vl": 25004
+            },
+            {
+              "p": "10:00",
+              "tp": "DF",
+              "vl": 23435
+            },
+            {
+              "p": "11:00",
+              "tp": "D",
+              "vl": 24307
+            },
+            {
+              "p": "11:00",
+              "tp": "DF",
+              "vl": 23049
+            },
+            {
+              "p": "12:00",
+              "tp": "D",
+              "vl": 23824
+            },
+            {
+              "p": "12:00",
+              "tp": "DF",
+              "vl": 23137
+            },
+            {
+              "p": "13:00",
+              "tp": "D",
+              "vl": 23955
+            },
+            {
+              "p": "13:00",
+              "tp": "DF",
+              "vl": 23712
+            },
+            {
+              "p": "14:00",
+              "tp": "D",
+              "vl": 24652
+            },
+            {
+              "p": "14:00",
+              "tp": "DF",
+              "vl": 24813
+            },
+            {
+              "p": "15:00",
+              "tp": "D",
+              "vl": 25283
+            },
+            {
+              "p": "15:00",
+              "tp": "DF",
+              "vl": 25373
+            },
+            {
+              "p": "16:00",
+              "tp": "D",
+              "vl": 25888
+            },
+            {
+              "p": "16:00",
+              "tp": "DF",
+              "vl": 24677
+            }
+          ]
+        }
+      },
+      "foreDemand": 24677,
+      "currDemand": 25888
+    },
+    "attributes": {
+      "uuid": "22f5fd7b-0274-45f8-91f5-3be28db7cf81",
+      "guarded": "none",
+      "modeltype": "CPEE",
+      "theme": "extended",
+      "guarded_id": "",
+      "info": "RunTime Dashboard for Weather Vs Resources",
+      "creator": "Christine Ashcreek",
+      "author": "Christine Ashcreek",
+      "model_uuid": "6556edcc-b607-4063-8389-caf6b2316194",
+      "model_version": "",
+      "design_dir": "Teaching.dir/Prak.dir/TUM-Prak-24-WS.dir/Ngoc Nguyen.dir",
+      "design_stage": "development"
+    }
+  },
+  "instance-uuid": "22f5fd7b-0274-45f8-91f5-3be28db7cf81",
+  "instance-name": "RunTime Dashboard for Weather Vs Resources",
+  "datastream": [
+    {
+      "stream:point": {
+        "stream:id": "Demand",
+        "stream:value": null,
+        "stream:timestamp": "2025-03-24 17:42:52 +0100",
+        "stream:source": "eia"
+      }
+    }
+  ]
+}

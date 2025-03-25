@@ -1,0 +1,166 @@
+{
+  "cpee": "https://cpee.org/flow/engine/",
+  "instance-url": "https://cpee.org/flow/engine/53049",
+  "instance": 53049,
+  "topic": "stream",
+  "type": "event",
+  "name": "extraction",
+  "timestamp": "2025-03-24T15:46:07.859043+01:00",
+  "content": {
+    "activity-uuid": "ae5bea4da43137fe3de7c51fcabea805",
+    "endpoint": "https://lehre.bpm.in.tum.de/ports/16067/api/getWeather",
+    "label": "get Weather Data",
+    "activity": "a4",
+    "changed": [
+      "weatherResponses",
+      "currWindSpeed"
+    ],
+    "values": {
+      "weatherResponses": {
+        "status": "Success",
+        "data": {
+          "location": "California City",
+          "country": "United States of America",
+          "localtime": "2025-03-24 07:46",
+          "current": {
+            "lastupdated": "2025-03-24 07:45",
+            "cur_temperature": 9.2,
+            "condition": {
+              "text": "Sunny",
+              "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+            },
+            "cur_windspeed": 3.6,
+            "cur_cloudCover": 0
+          },
+          "forecast": [
+            {
+              "date": "2025-03-24",
+              "srise": "06:50 AM",
+              "sset": "07:08 PM",
+              "hourly": [
+                {
+                  "t": "00:00",
+                  "temp": 14.3,
+                  "wid": 10.1,
+                  "cld": 0
+                },
+                {
+                  "t": "01:00",
+                  "temp": 13.5,
+                  "wid": 9.7,
+                  "cld": 0
+                },
+                {
+                  "t": "02:00",
+                  "temp": 12.7,
+                  "wid": 8.6,
+                  "cld": 0
+                },
+                {
+                  "t": "03:00",
+                  "temp": 12.1,
+                  "wid": 6.1,
+                  "cld": 0
+                },
+                {
+                  "t": "04:00",
+                  "temp": 11.6,
+                  "wid": 3.6,
+                  "cld": 0
+                },
+                {
+                  "t": "05:00",
+                  "temp": 11.6,
+                  "wid": 1.8,
+                  "cld": 1
+                },
+                {
+                  "t": "06:00",
+                  "temp": 11.3,
+                  "wid": 1.4,
+                  "cld": 0
+                },
+                {
+                  "t": "07:00",
+                  "temp": 9.2,
+                  "wid": 3.6,
+                  "cld": 0
+                },
+                {
+                  "t": "08:00",
+                  "temp": 13.4,
+                  "wid": 1.1,
+                  "cld": 0
+                },
+                {
+                  "t": "09:00",
+                  "temp": 15.9,
+                  "wid": 2.5,
+                  "cld": 0
+                },
+                {
+                  "t": "10:00",
+                  "temp": 19.6,
+                  "wid": 6.1,
+                  "cld": 0
+                },
+                {
+                  "t": "11:00",
+                  "temp": 23,
+                  "wid": 7.9,
+                  "cld": 0
+                },
+                {
+                  "t": "12:00",
+                  "temp": 26.1,
+                  "wid": 12.2,
+                  "cld": 0
+                },
+                {
+                  "t": "13:00",
+                  "temp": 27.9,
+                  "wid": 13.7,
+                  "cld": 0
+                },
+                {
+                  "t": "14:00",
+                  "temp": 28.9,
+                  "wid": 11.2,
+                  "cld": 0
+                }
+              ]
+            }
+          ]
+        },
+        "currentWindSpeed": 3.6
+      },
+      "currWindSpeed": 3.6
+    },
+    "attributes": {
+      "uuid": "811a258e-2c6f-4062-a3d0-8ababc3e9c99",
+      "guarded": "none",
+      "modeltype": "CPEE",
+      "theme": "extended",
+      "guarded_id": "",
+      "info": "RunTime Dashboard for Weather Vs Resources",
+      "creator": "Christine Ashcreek",
+      "author": "Christine Ashcreek",
+      "model_uuid": "6556edcc-b607-4063-8389-caf6b2316194",
+      "model_version": "",
+      "design_dir": "Teaching.dir/Prak.dir/TUM-Prak-24-WS.dir/Ngoc Nguyen.dir",
+      "design_stage": "development"
+    }
+  },
+  "instance-uuid": "811a258e-2c6f-4062-a3d0-8ababc3e9c99",
+  "instance-name": "RunTime Dashboard for Weather Vs Resources",
+  "datastream": [
+    {
+      "stream:point": {
+        "stream:id": "a4",
+        "stream:value": null,
+        "stream:timestamp": "2025-03-24 15:46:07 +0100",
+        "stream:source": "WeatherData"
+      }
+    }
+  ]
+}

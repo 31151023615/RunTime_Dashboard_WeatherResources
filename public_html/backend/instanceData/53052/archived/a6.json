@@ -1,0 +1,860 @@
+{
+  "cpee": "https://cpee.org/flow/engine/",
+  "instance-url": "https://cpee.org/flow/engine/53052",
+  "instance": 53052,
+  "topic": "stream",
+  "type": "event",
+  "name": "extraction",
+  "timestamp": "2025-03-24T17:28:22.725922+01:00",
+  "content": {
+    "activity-uuid": "2e6efaed917f6764677acfb43f8a5c35",
+    "endpoint": "https://lehre.bpm.in.tum.de/ports/16067/api/getElectricityGeneration",
+    "label": "Get Electricity Generation & Latest Turbine Status  (Provide City/State Code: FLA (Florida), New York (NY), California (CAL), Texas (TEX) ",
+    "activity": "a6",
+    "changed": [
+      "generationResponses",
+      "currEnergyGenByWind",
+      "totalEnergyGenByAllFuel",
+      "turbine1Value",
+      "turbine2Value",
+      "turbine3Value",
+      "turbine4Value"
+    ],
+    "values": {
+      "generationResponses": {
+        "status": "Success",
+        "currEnergyGenByWind": 0,
+        "totalEnergyGenByAllFuel": 24130,
+        "data": {
+          "totalRecords": "225",
+          "currentHour": "2025-03-24 16:00",
+          "frequency": "hourly",
+          "hourlyData": [
+            {
+              "p": "00:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "00:00",
+              "fu": "Coal",
+              "vl": 1069
+            },
+            {
+              "p": "00:00",
+              "fu": "Natural Gas",
+              "vl": 20124
+            },
+            {
+              "p": "00:00",
+              "fu": "Nuclear",
+              "vl": 3029
+            },
+            {
+              "p": "00:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "00:00",
+              "fu": "Other",
+              "vl": 514
+            },
+            {
+              "p": "00:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 5
+            },
+            {
+              "p": "00:00",
+              "fu": "Solar",
+              "vl": 470
+            },
+            {
+              "p": "00:00",
+              "fu": "Hydro",
+              "vl": 27
+            },
+            {
+              "p": "01:00",
+              "fu": "Battery storage",
+              "vl": 1
+            },
+            {
+              "p": "01:00",
+              "fu": "Coal",
+              "vl": 1180
+            },
+            {
+              "p": "01:00",
+              "fu": "Natural Gas",
+              "vl": 20692
+            },
+            {
+              "p": "01:00",
+              "fu": "Nuclear",
+              "vl": 3027
+            },
+            {
+              "p": "01:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "01:00",
+              "fu": "Other",
+              "vl": 519
+            },
+            {
+              "p": "01:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "01:00",
+              "fu": "Solar",
+              "vl": 3
+            },
+            {
+              "p": "01:00",
+              "fu": "Hydro",
+              "vl": 27
+            },
+            {
+              "p": "02:00",
+              "fu": "Battery storage",
+              "vl": 1
+            },
+            {
+              "p": "02:00",
+              "fu": "Coal",
+              "vl": 1158
+            },
+            {
+              "p": "02:00",
+              "fu": "Natural Gas",
+              "vl": 19726
+            },
+            {
+              "p": "02:00",
+              "fu": "Nuclear",
+              "vl": 3030
+            },
+            {
+              "p": "02:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "02:00",
+              "fu": "Other",
+              "vl": 497
+            },
+            {
+              "p": "02:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "02:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "02:00",
+              "fu": "Hydro",
+              "vl": 28
+            },
+            {
+              "p": "03:00",
+              "fu": "Battery storage",
+              "vl": 1
+            },
+            {
+              "p": "03:00",
+              "fu": "Coal",
+              "vl": 1105
+            },
+            {
+              "p": "03:00",
+              "fu": "Natural Gas",
+              "vl": 18344
+            },
+            {
+              "p": "03:00",
+              "fu": "Nuclear",
+              "vl": 3025
+            },
+            {
+              "p": "03:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "03:00",
+              "fu": "Other",
+              "vl": 476
+            },
+            {
+              "p": "03:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "03:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "03:00",
+              "fu": "Hydro",
+              "vl": 27
+            },
+            {
+              "p": "04:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "04:00",
+              "fu": "Coal",
+              "vl": 1013
+            },
+            {
+              "p": "04:00",
+              "fu": "Natural Gas",
+              "vl": 16979
+            },
+            {
+              "p": "04:00",
+              "fu": "Nuclear",
+              "vl": 3033
+            },
+            {
+              "p": "04:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "04:00",
+              "fu": "Other",
+              "vl": 426
+            },
+            {
+              "p": "04:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "04:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "04:00",
+              "fu": "Hydro",
+              "vl": 27
+            },
+            {
+              "p": "05:00",
+              "fu": "Battery storage",
+              "vl": -1
+            },
+            {
+              "p": "05:00",
+              "fu": "Coal",
+              "vl": 764
+            },
+            {
+              "p": "05:00",
+              "fu": "Natural Gas",
+              "vl": 15589
+            },
+            {
+              "p": "05:00",
+              "fu": "Nuclear",
+              "vl": 3031
+            },
+            {
+              "p": "05:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "05:00",
+              "fu": "Other",
+              "vl": 402
+            },
+            {
+              "p": "05:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "05:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "05:00",
+              "fu": "Hydro",
+              "vl": 28
+            },
+            {
+              "p": "06:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "06:00",
+              "fu": "Coal",
+              "vl": 562
+            },
+            {
+              "p": "06:00",
+              "fu": "Natural Gas",
+              "vl": 14836
+            },
+            {
+              "p": "06:00",
+              "fu": "Nuclear",
+              "vl": 3031
+            },
+            {
+              "p": "06:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "06:00",
+              "fu": "Other",
+              "vl": 400
+            },
+            {
+              "p": "06:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "06:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "06:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "07:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "07:00",
+              "fu": "Coal",
+              "vl": 558
+            },
+            {
+              "p": "07:00",
+              "fu": "Natural Gas",
+              "vl": 14432
+            },
+            {
+              "p": "07:00",
+              "fu": "Nuclear",
+              "vl": 3036
+            },
+            {
+              "p": "07:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "07:00",
+              "fu": "Other",
+              "vl": 406
+            },
+            {
+              "p": "07:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "07:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "07:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "08:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "08:00",
+              "fu": "Coal",
+              "vl": 584
+            },
+            {
+              "p": "08:00",
+              "fu": "Natural Gas",
+              "vl": 14285
+            },
+            {
+              "p": "08:00",
+              "fu": "Nuclear",
+              "vl": 3033
+            },
+            {
+              "p": "08:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "08:00",
+              "fu": "Other",
+              "vl": 430
+            },
+            {
+              "p": "08:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "08:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "08:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "09:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "09:00",
+              "fu": "Coal",
+              "vl": 640
+            },
+            {
+              "p": "09:00",
+              "fu": "Natural Gas",
+              "vl": 14508
+            },
+            {
+              "p": "09:00",
+              "fu": "Nuclear",
+              "vl": 3033
+            },
+            {
+              "p": "09:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "09:00",
+              "fu": "Other",
+              "vl": 466
+            },
+            {
+              "p": "09:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "09:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "09:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "10:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "10:00",
+              "fu": "Coal",
+              "vl": 865
+            },
+            {
+              "p": "10:00",
+              "fu": "Natural Gas",
+              "vl": 14984
+            },
+            {
+              "p": "10:00",
+              "fu": "Nuclear",
+              "vl": 3038
+            },
+            {
+              "p": "10:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "10:00",
+              "fu": "Other",
+              "vl": 510
+            },
+            {
+              "p": "10:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "10:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "10:00",
+              "fu": "Hydro",
+              "vl": 27
+            },
+            {
+              "p": "11:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "11:00",
+              "fu": "Coal",
+              "vl": 1002
+            },
+            {
+              "p": "11:00",
+              "fu": "Natural Gas",
+              "vl": 16267
+            },
+            {
+              "p": "11:00",
+              "fu": "Nuclear",
+              "vl": 3035
+            },
+            {
+              "p": "11:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "11:00",
+              "fu": "Other",
+              "vl": 507
+            },
+            {
+              "p": "11:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 0
+            },
+            {
+              "p": "11:00",
+              "fu": "Solar",
+              "vl": 0
+            },
+            {
+              "p": "11:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "12:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "12:00",
+              "fu": "Coal",
+              "vl": 1125
+            },
+            {
+              "p": "12:00",
+              "fu": "Natural Gas",
+              "vl": 17421
+            },
+            {
+              "p": "12:00",
+              "fu": "Nuclear",
+              "vl": 3036
+            },
+            {
+              "p": "12:00",
+              "fu": "Petroleum",
+              "vl": 10
+            },
+            {
+              "p": "12:00",
+              "fu": "Other",
+              "vl": 794
+            },
+            {
+              "p": "12:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 3
+            },
+            {
+              "p": "12:00",
+              "fu": "Solar",
+              "vl": 119
+            },
+            {
+              "p": "12:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "13:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "13:00",
+              "fu": "Coal",
+              "vl": 1244
+            },
+            {
+              "p": "13:00",
+              "fu": "Natural Gas",
+              "vl": 16678
+            },
+            {
+              "p": "13:00",
+              "fu": "Nuclear",
+              "vl": 3038
+            },
+            {
+              "p": "13:00",
+              "fu": "Petroleum",
+              "vl": 12
+            },
+            {
+              "p": "13:00",
+              "fu": "Other",
+              "vl": 533
+            },
+            {
+              "p": "13:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 47
+            },
+            {
+              "p": "13:00",
+              "fu": "Solar",
+              "vl": 3085
+            },
+            {
+              "p": "13:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "14:00",
+              "fu": "Battery storage",
+              "vl": 0
+            },
+            {
+              "p": "14:00",
+              "fu": "Coal",
+              "vl": 1022
+            },
+            {
+              "p": "14:00",
+              "fu": "Natural Gas",
+              "vl": 12788
+            },
+            {
+              "p": "14:00",
+              "fu": "Nuclear",
+              "vl": 3034
+            },
+            {
+              "p": "14:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "14:00",
+              "fu": "Other",
+              "vl": 436
+            },
+            {
+              "p": "14:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 97
+            },
+            {
+              "p": "14:00",
+              "fu": "Solar",
+              "vl": 7515
+            },
+            {
+              "p": "14:00",
+              "fu": "Hydro",
+              "vl": 27
+            },
+            {
+              "p": "15:00",
+              "fu": "Battery storage",
+              "vl": -1
+            },
+            {
+              "p": "15:00",
+              "fu": "Coal",
+              "vl": 766
+            },
+            {
+              "p": "15:00",
+              "fu": "Natural Gas",
+              "vl": 11197
+            },
+            {
+              "p": "15:00",
+              "fu": "Nuclear",
+              "vl": 3037
+            },
+            {
+              "p": "15:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "15:00",
+              "fu": "Other",
+              "vl": 375
+            },
+            {
+              "p": "15:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 118
+            },
+            {
+              "p": "15:00",
+              "fu": "Solar",
+              "vl": 9051
+            },
+            {
+              "p": "15:00",
+              "fu": "Hydro",
+              "vl": 26
+            },
+            {
+              "p": "16:00",
+              "fu": "Battery storage",
+              "vl": -1
+            },
+            {
+              "p": "16:00",
+              "fu": "Coal",
+              "vl": 580
+            },
+            {
+              "p": "16:00",
+              "fu": "Natural Gas",
+              "vl": 10333
+            },
+            {
+              "p": "16:00",
+              "fu": "Nuclear",
+              "vl": 3040
+            },
+            {
+              "p": "16:00",
+              "fu": "Petroleum",
+              "vl": 0
+            },
+            {
+              "p": "16:00",
+              "fu": "Other",
+              "vl": 361
+            },
+            {
+              "p": "16:00",
+              "fu": "Solar with integrated battery storage",
+              "vl": 130
+            },
+            {
+              "p": "16:00",
+              "fu": "Solar",
+              "vl": 9660
+            },
+            {
+              "p": "16:00",
+              "fu": "Hydro",
+              "vl": 27
+            }
+          ],
+          "turbines": {
+            "hour": "2025-03-24 16:00",
+            "turb": [
+              {
+                "turId": 1,
+                "vl": 0,
+                "stt": 1
+              },
+              {
+                "turId": 2,
+                "vl": 0,
+                "stt": 1
+              },
+              {
+                "turId": 3,
+                "vl": 0,
+                "stt": 1
+              },
+              {
+                "turId": 4,
+                "vl": 0,
+                "stt": 1
+              }
+            ]
+          }
+        }
+      },
+      "currEnergyGenByWind": 0,
+      "totalEnergyGenByAllFuel": 24130,
+      "turbine1Value": 0,
+      "turbine2Value": 0,
+      "turbine3Value": 0,
+      "turbine4Value": 0
+    },
+    "attributes": {
+      "uuid": "9b2c481b-76ce-4165-8d07-4573869bc1c2",
+      "guarded": "none",
+      "modeltype": "CPEE",
+      "theme": "extended",
+      "guarded_id": "",
+      "info": "RunTime Dashboard for Weather Vs Resources",
+      "creator": "Christine Ashcreek",
+      "author": "Christine Ashcreek",
+      "model_uuid": "6556edcc-b607-4063-8389-caf6b2316194",
+      "model_version": "",
+      "design_dir": "Teaching.dir/Prak.dir/TUM-Prak-24-WS.dir/Ngoc Nguyen.dir",
+      "design_stage": "development"
+    }
+  },
+  "instance-uuid": "9b2c481b-76ce-4165-8d07-4573869bc1c2",
+  "instance-name": "RunTime Dashboard for Weather Vs Resources",
+  "datastream": [
+    {
+      "stream:point": {
+        "stream:id": "Generation",
+        "stream:value": null,
+        "stream:timestamp": "2025-03-24 17:28:22 +0100",
+        "stream:source": "Eia"
+      }
+    }
+  ]
+}

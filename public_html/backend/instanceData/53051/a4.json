@@ -1,0 +1,178 @@
+{
+  "cpee": "https://cpee.org/flow/engine/",
+  "instance-url": "https://cpee.org/flow/engine/53051",
+  "instance": 53051,
+  "topic": "stream",
+  "type": "event",
+  "name": "extraction",
+  "timestamp": "2025-03-24T17:42:51.313642+01:00",
+  "content": {
+    "activity-uuid": "e6fabfc87321f51772b5b92976df8e8d",
+    "endpoint": "https://lehre.bpm.in.tum.de/ports/16067/api/getWeather",
+    "label": "get Weather Data",
+    "activity": "a4",
+    "changed": [
+      "weatherResponses",
+      "currWindSpeed"
+    ],
+    "values": {
+      "weatherResponses": {
+        "status": "Success",
+        "data": {
+          "location": "California City",
+          "country": "United States of America",
+          "localtime": "2025-03-24 09:41",
+          "current": {
+            "lastupdated": "2025-03-24 09:30",
+            "cur_temperature": 19.4,
+            "condition": {
+              "text": "Sunny",
+              "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+            },
+            "cur_windspeed": 3.6,
+            "cur_cloudCover": 0
+          },
+          "forecast": [
+            {
+              "date": "2025-03-24",
+              "srise": "06:50 AM",
+              "sset": "07:08 PM",
+              "hourly": [
+                {
+                  "t": "00:00",
+                  "temp": 14.3,
+                  "wid": 10.1,
+                  "cld": 0
+                },
+                {
+                  "t": "01:00",
+                  "temp": 12.8,
+                  "wid": 9.7,
+                  "cld": 0
+                },
+                {
+                  "t": "02:00",
+                  "temp": 12.2,
+                  "wid": 9,
+                  "cld": 0
+                },
+                {
+                  "t": "03:00",
+                  "temp": 12,
+                  "wid": 6.5,
+                  "cld": 0
+                },
+                {
+                  "t": "04:00",
+                  "temp": 11.9,
+                  "wid": 4,
+                  "cld": 0
+                },
+                {
+                  "t": "05:00",
+                  "temp": 11.9,
+                  "wid": 2.5,
+                  "cld": 0
+                },
+                {
+                  "t": "06:00",
+                  "temp": 11.7,
+                  "wid": 2.5,
+                  "cld": 0
+                },
+                {
+                  "t": "07:00",
+                  "temp": 12.2,
+                  "wid": 1.1,
+                  "cld": 0
+                },
+                {
+                  "t": "08:00",
+                  "temp": 13.8,
+                  "wid": 0.4,
+                  "cld": 0
+                },
+                {
+                  "t": "09:00",
+                  "temp": 19.4,
+                  "wid": 3.6,
+                  "cld": 0
+                },
+                {
+                  "t": "10:00",
+                  "temp": 20,
+                  "wid": 5.8,
+                  "cld": 0
+                },
+                {
+                  "t": "11:00",
+                  "temp": 23.4,
+                  "wid": 7.9,
+                  "cld": 0
+                },
+                {
+                  "t": "12:00",
+                  "temp": 26.4,
+                  "wid": 11.5,
+                  "cld": 0
+                },
+                {
+                  "t": "13:00",
+                  "temp": 28.2,
+                  "wid": 13.3,
+                  "cld": 0
+                },
+                {
+                  "t": "14:00",
+                  "temp": 29.2,
+                  "wid": 11.5,
+                  "cld": 0
+                },
+                {
+                  "t": "15:00",
+                  "temp": 29.4,
+                  "wid": 9,
+                  "cld": 0
+                },
+                {
+                  "t": "16:00",
+                  "temp": 29.2,
+                  "wid": 6.5,
+                  "cld": 2
+                }
+              ]
+            }
+          ]
+        },
+        "currentWindSpeed": 3.6
+      },
+      "currWindSpeed": 3.6
+    },
+    "attributes": {
+      "uuid": "22f5fd7b-0274-45f8-91f5-3be28db7cf81",
+      "guarded": "none",
+      "modeltype": "CPEE",
+      "theme": "extended",
+      "guarded_id": "",
+      "info": "RunTime Dashboard for Weather Vs Resources",
+      "creator": "Christine Ashcreek",
+      "author": "Christine Ashcreek",
+      "model_uuid": "6556edcc-b607-4063-8389-caf6b2316194",
+      "model_version": "",
+      "design_dir": "Teaching.dir/Prak.dir/TUM-Prak-24-WS.dir/Ngoc Nguyen.dir",
+      "design_stage": "development"
+    }
+  },
+  "instance-uuid": "22f5fd7b-0274-45f8-91f5-3be28db7cf81",
+  "instance-name": "RunTime Dashboard for Weather Vs Resources",
+  "datastream": [
+    {
+      "stream:point": {
+        "stream:id": "a4",
+        "stream:value": null,
+        "stream:timestamp": "2025-03-24 17:42:51 +0100",
+        "stream:source": "WeatherData"
+      }
+    }
+  ]
+}
