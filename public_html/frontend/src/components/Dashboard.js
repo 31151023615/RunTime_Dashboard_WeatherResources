@@ -7,13 +7,13 @@ import AllFuelGenerationChart from "./AllFuelGenerationChart";
 import TurbineCircularChart from "./TurbineCircularChart";
 import { Circle} from "@mui/icons-material"; 
 
-import { useSSEData } from "./SSEProvider"; // ? Import the SSE Hook
+import { useSSEData } from "./SSEProvider"; // ✅ Import the SSE Hook
 
 
-// ?? Utility: Format Forecast Data into an Object
+// 🔹 Utility: Format Forecast Data into an Object
 const processForecastData = (forecast) => {
   if (!forecast || !Array.isArray(forecast)) {
-    console.warn("?? Forecast data is missing or invalid:", forecast);
+    console.warn("⚠️ Forecast data is missing or invalid:", forecast);
     return {};
   }
   const { hourly } = forecast[0];
@@ -25,7 +25,7 @@ const processForecastData = (forecast) => {
     ])
   );
 };
-// ?? Utility: Generate Fixed Time Series for 24 Hours
+// 🔹 Utility: Generate Fixed Time Series for 24 Hours
 const generateFixedTimeSeries = () =>
   Array.from({ length: 24 }, (_, i) => ({
     time: `${String(i).padStart(2, "0")}:00`,
@@ -38,13 +38,11 @@ const Dashboard = () => {
   const [lineBarChartData, setLineBarChartData] = useState({});
   const [allFuelChartData, setAllFuelChartData] = useState({});
   const [instanceDataMap, setInstanceDataMap] = useState({});
-  // const [turbineData, setTurbineData] = useState({});
   const [turbineChartData, setTurbineChartData] = useState({});
 
-  // const [weatherHistory, setWeatherHistory] = useState({});
-  const forecastRef = useRef({}); // ?? Persist forecast data across re-renders
+  const forecastRef = useRef({}); // 🔥 Persist forecast data across re-renders
 
-  //? Store all instance data, preserving existing fields
+  //✅ Store all instance data, preserving existing fields
   const updateInstanceData = (instanceId, newData) => {
     setInstanceDataMap((prev) => ({
       ...prev,
@@ -70,7 +68,7 @@ const Dashboard = () => {
   };
 
 
-  //===== ?? Process Demand Data and Associate with Forecast Temperature
+  //===== 📊 Process Demand Data and Associate with Forecast Temperature
   const processDemandData = (instanceId, forecastData, currentTemp, hourlyData) => {
     const fixedTimeSeries = generateFixedTimeSeries();
 
@@ -80,7 +78,7 @@ const Dashboard = () => {
         .map((entry) => [entry.p, entry.vl])
     );
 
-    // ?? Fallback for missing forecast data
+    // 🔹 Fallback for missing forecast data
     const fallbackTemperatureMap = Object.fromEntries(
       fixedTimeSeries.map(({ time }) => [time, currentTemp ?? 0])
     );
@@ -90,11 +88,11 @@ const Dashboard = () => {
       [instanceId]: fixedTimeSeries.map((entry) => ({
         time: entry.time,
         demand: demandMap[entry.time] ?? 0,
-        temperature: forecastRef.current[instanceId]?.[entry.time]?.temp ?? fallbackTemperatureMap[entry.time], // Extract temp
+        temperature: forecastRef.current[instanceId]?.[entry.time]?.temp ?? fallbackTemperatureMap[entry.time],  
       }))
     };
 
-    console.log("?? Updated Demand Data with Forecast:", mappedLineBarData);
+    console.log("📊 Updated Demand Data with Forecast:", mappedLineBarData);
     setLineBarChartData((prev) => ({
       ...prev,
       [instanceId]: mappedLineBarData[instanceId],
@@ -102,7 +100,7 @@ const Dashboard = () => {
 
   };
 
-  //===== ?? Process Wind Generation Data and associate with Forecast Tem
+  //===== 📊 Process Wind Generation Data and associate with Forecast Tem
   const processWindGenerationData = (instanceId, forecastData, currentWind, hourlyData) => {
     const fixedTimeSeries = generateFixedTimeSeries();
 
@@ -111,7 +109,7 @@ const Dashboard = () => {
         .filter((entry) => entry.fu === "Wind")
         .map((entry) => [entry.p, entry.vl])
     );
-    // ?? Fallback for missing forecast data
+    // 🔹 Fallback for missing forecast data
     const fallbackWindGenerationMap = Object.fromEntries(
       fixedTimeSeries.map(({ time }) => [time, currentWind ?? 0])
     );
@@ -126,16 +124,15 @@ const Dashboard = () => {
       }))
     };
 
-    // setWindChartData((prev) => ({...prev,...mappedWindChartData,}));
     setWindChartData((prev) => ({
       ...prev,
       [instanceId]: mappedWindChartData[instanceId],
     }));
 
-    console.log("?? Updated Wind Chart Data with Forecast:", mappedWindChartData);
+    console.log("📊 Updated Wind Chart Data with Forecast:", mappedWindChartData);
 
   };
-  //===== ?? Process Solar Generation Data and associate with Forecast Tem
+  //===== 📊 Process Solar Generation Data and associate with Forecast Tem
   const processSolarGenerationData = (instanceId, forecastData, currentSolar, hourlyData) => {
     const fixedTimeSeries = generateFixedTimeSeries();
 
@@ -144,7 +141,7 @@ const Dashboard = () => {
         .filter((entry) => entry.fu === "Solar")
         .map((entry) => [entry.p, entry.vl])
     );
-    // ?? Fallback for missing forecast data
+    // 🔹 Fallback for missing forecast data
     const fallbackSolarGenerationMap = Object.fromEntries(
       fixedTimeSeries.map(({ time }) => [time, currentSolar ?? 0])
     );
@@ -154,24 +151,22 @@ const Dashboard = () => {
       [instanceId]: fixedTimeSeries.map((entry) => ({
         time: entry.time,
         solarGeneration: solarGenerationMap[entry.time] ?? 0,
-        cloudCover: forecastRef.current[instanceId]?.[entry.time]?.cld ?? fallbackSolarGenerationMap[entry.time], // Extract temp
+        cloudCover: forecastRef.current[instanceId]?.[entry.time]?.cld ?? fallbackSolarGenerationMap[entry.time],
       }))
     };
 
-    // setWindChartData((prev) => ({...prev,...mappedWindChartData,}));
     setSolarChartData((prev) => ({
       ...prev,
       [instanceId]: mappedSolarChartData[instanceId],
     }));
 
-    console.log("?? Updated Solar Chart Data with Forecast:", mappedSolarChartData);
+    console.log("📊 Updated Solar Chart Data with Forecast:", mappedSolarChartData);
 
   };
-  //===== ?? Process All Fuel Generation Data  
+  //===== 📊 Process All Fuel Generation Data  
   const processAllGenerationData = (instanceId, hourlyData) => {
     const fixedTimeSeries = generateFixedTimeSeries();
 
-    // Group data by time
     const allFuelGenerationMap = {};
 
     hourlyData.forEach(({ p: time, vl: valueGeneration, fu: fuelType }) => {
@@ -181,7 +176,6 @@ const Dashboard = () => {
       allFuelGenerationMap[time].push({ fuelType, valueGeneration });
     });
 
-    // Merge grouped data into fixed time series
     const mappedAllFuelChartData = {
       [instanceId]: fixedTimeSeries.map(({ time }) => ({
         time,
@@ -189,13 +183,12 @@ const Dashboard = () => {
       }))
     };
 
-    // Update state
     setAllFuelChartData((prev) => ({
       ...prev,
       [instanceId]: mappedAllFuelChartData[instanceId],
     }));
 
-    console.log("?? Updated all fuel data Chart Data with Forecast:", mappedAllFuelChartData);
+    console.log("📊 Updated all fuel data Chart Data with Forecast:", mappedAllFuelChartData);
   };
 
   //==== Process to get initial Turbine Data
@@ -207,7 +200,7 @@ const Dashboard = () => {
   
     const mappedTurbineChartData = {
       [instanceId]: {
-        currEnergyGenByWind: currEnergyGenByWind ?? 1000, // Default to 1000 if missing
+        currEnergyGenByWind: currEnergyGenByWind ?? 1000,  
         turbines: turbineData.map((turb) => ({
           turId: turb.turId,
           energyGenerated: turb.vl,
@@ -221,28 +214,24 @@ const Dashboard = () => {
       [instanceId]: mappedTurbineChartData[instanceId],
     }));
   
-    console.log("?? Updated Turbine Chart Data:", mappedTurbineChartData);
+    console.log("📊 Updated Turbine Chart Data:", mappedTurbineChartData);
   };
 
   //==== Process to get Updated Turbine Status
   const updateTurbineStatusFromEvent = (instanceId, eventData) => {
     if (!eventData || !eventData.values) {
-      console.warn("?? No valid eventData.values found, skipping update.");
+      console.warn("⚠️ No valid eventData.values found, skipping update.");
       return;
     }
   
     setTurbineChartData((prev) => {
       console.log("===>>> Before update:", prev);
       console.log(">>>>>> Event Data:", eventData);  
-      // Get the current instance data or initialize if missing
       const prevInstanceData = prev[instanceId] || { currEnergyGenByWind: 1000, turbines: [] };
   
-      // Map over turbines and update the ones found in eventData
       const updatedTurbines = prevInstanceData.turbines.map((turb) => {
-        const turbineKey = `turbine${turb.turId}`; // e.g., "turbine1", "turbine2", etc.
-  
-        // If the turbine is in eventData.values, update its status
-        if (turbineKey in eventData.values) {
+        const turbineKey = `turbine${turb.turId}`;  
+         if (turbineKey in eventData.values) {
           return {
             ...turb,
             status: eventData.values[turbineKey] === 1 ? "Active" : "Inactive",
@@ -259,19 +248,17 @@ const Dashboard = () => {
       };
     });
   
-    console.log("?? Updated Turbine Status from Event:", eventData);
+    console.log("📊 Updated Turbine Status from Event:", eventData);
   };
 
   const sseData = useSSEData();
   useEffect(() => {
-    // const eventSource = new EventSource("https://lehre.bpm.in.tum.de/ports/16067/api/events");
-    //const eventSource = new EventSource("https://lehre.bpm.in.tum.de/ports/16067/api/mockEvents");
-    if (!sseData) return;  // ? Ensure we have events
+      if (!sseData) return;  
     try {
       console.log("Dashboard Page: Processing new SSE Data:", sseData);
 
       const { instance, content, timestamp } = sseData;
-      if (!content?.values) return console.warn("Dashboard Page: ?? No `values` in SSE data.");
+      if (!content?.values) return console.warn("Dashboard Page: ⚠️ No `values` in SSE data.");
 
       const instanceId = instance.toString();
       const now = new Date();
@@ -283,11 +270,11 @@ const Dashboard = () => {
       let currentSolar = null;
 
 
-      // ?? Handle Weather Data
+      // 🌤 Handle Weather Data
       if (content.values.weatherResponses?.data) {
         const weather = content.values.weatherResponses.data;
         if (typeof weather.forecast === "string") {
-          console.log("?? Parsing forecast JSON...");
+          console.log("🔄 Parsing forecast JSON...");
           weather.forecast = JSON.parse(weather.forecast);
         }
         currentTemp = weather.current?.cur_temperature ?? 0;
@@ -297,16 +284,16 @@ const Dashboard = () => {
         forecastRef.current[instanceId] = weather.forecast || {};
 
         if (weather.forecast) {
-          console.log("?? Forecast Data Before Processing:", weather.forecast);
+          console.log("🌤 Forecast Data Before Processing:", weather.forecast);
           forecastRef.current[instanceId] = processForecastData(weather.forecast);
-          console.log("? Processed Forecast Data Stored:", forecastRef.current);
+          console.log("✅ Processed Forecast Data Stored:", forecastRef.current);
         } else {
-          console.warn(`?? No forecast data available for instance ${instanceId}, initializing empty object.`);
-          forecastRef.current[instanceId] = {}; // ? Prevents errors when accessing later
+          console.warn(`⚠️ No forecast data available for instance ${instanceId}, initializing empty object.`);
+          forecastRef.current[instanceId] = {}; 
         }
         //Update the instanceData 
         updateInstanceData(instanceId, {
-          temperature: `${currentTemp}�C`,
+          temperature: `${currentTemp}°C`,
           weather: weather.current?.condition.text ?? "Unknown",
           windSpeed: `${weather.current?.cur_windspeed ?? 0} km/h`,
           cloudCover: `${weather.current?.cur_cloudCover ?? 0}%`,
@@ -315,33 +302,29 @@ const Dashboard = () => {
           timestamp: timestampWeather,
         });
       }
-      // ? Handle Demand Data
+      // ⚡ Handle Demand Data
       if (content.values.demandResponses?.data?.hourlyData) {
         processDemandData(instanceId, forecastRef.current[instanceId] || {}, currentTemp, content.values.demandResponses.data.hourlyData);
       }
-      // ?Handle Wind Generation Data
+      // ⚡Handle Wind Generation Data
       if (content.values.generationResponses?.data?.hourlyData) {
-        // processWindGenerationData(instanceId, forecastRef.current[instanceId]?.forecast ?? {}, currentWind, data.content.values.generationResponses.data.hourlyData);
-        processWindGenerationData(instanceId, forecastRef.current[instanceId] || {}, currentWind, content.values.generationResponses.data.hourlyData);
+         processWindGenerationData(instanceId, forecastRef.current[instanceId] || {}, currentWind, content.values.generationResponses.data.hourlyData);
 
       }
-      // ? Handle Solar Generation Data
+      // ⚡ Handle Solar Generation Data
       if (content.values.generationResponses?.data?.hourlyData) {
         processSolarGenerationData(instanceId, forecastRef.current[instanceId] || {}, currentSolar, content.values.generationResponses.data.hourlyData);
       }
-      // ? Handle Solar Generation Data
+      // ⚡ Handle Solar Generation Data
       if (content.values.generationResponses?.data?.hourlyData) {
         processAllGenerationData(instanceId, content.values.generationResponses.data.hourlyData);
       }
-      // ? Handle the update Turbine status
+      // ⚡ Handle the update Turbine status
       if (content?.values.generationResponses?.data?.turbines?.turb) {
         processTurbineChartData(instanceId, content.values.generationResponses.data.turbines.turb, content.values.generationResponses.currEnergyGenByWind);
-      }
-      // if (content?.values.turbine2 !== undefined || content?.values.turbine1 !== undefined || content?.values.turbine3 !== undefined || content?.values.turbine4 !== undefined) {
-      //   updateTurbineStatusFromEvent(instanceId, content.values);
-      // }
+      } 
       if (content?.values && (content.values.turbine1 !== undefined || content.values.turbine2 !== undefined || content.values.turbine3 !== undefined || content.values.turbine4 !== undefined)) {
-        console.log("?? Updating Turbine Status");
+        console.log("🚀 Updating Turbine Status");
         updateTurbineStatusFromEvent(instanceId, content);
       }
 
@@ -353,8 +336,8 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* ?? Debugging Log */}
-      {console.log("?? Parent Props Before Render:", { instances, lineBarChartData, windChartData, allFuelChartData })}
+      {/* 🔍 Debugging Log */}
+      {console.log("📌 Parent Props Before Render:", { instances, lineBarChartData, windChartData, allFuelChartData })}
 
       <Box sx={{ backgroundColor: "#060C1A", minHeight: "100vh", padding: "20px" }}>
         <Typography
@@ -376,7 +359,7 @@ const Dashboard = () => {
             Select other instances
           </Link>
         </Typography>
-        {/* ?? Row 1: Current Weather Instances */}
+        {/* 🔹 Row 1: Current Weather Instances */}
         <Grid container spacing={3}>
           {(instances ?? [])
             .filter((instance) => instance) // Remove null/undefined values
@@ -388,7 +371,7 @@ const Dashboard = () => {
             ))}
         </Grid>
 
-        {/* ?? Row 2: Forecast Temperature Vs Electricity Demand */}
+        {/* 🔹 Row 2: Forecast Temperature Vs Electricity Demand */}
         <Grid container spacing={3}>
           {(instances ?? [])
             .filter((instance) => instance)
@@ -399,7 +382,7 @@ const Dashboard = () => {
               </Grid>
             ))}
         </Grid>
-        {/* ?? Row 3: Turbine data */}
+        {/* 🔹 Row 3: Turbine data */}
         <Grid container spacing={3}>
           {(instances ?? [])
             .filter((instance) => instance)
@@ -409,7 +392,7 @@ const Dashboard = () => {
               </Grid>
             ))}
         </Grid>
-        {/* ?? Row 3: Wind Speed Vs Electricity Generation */}
+        {/* 🔹 Row 3: Wind Speed Vs Electricity Generation */}
         <Grid container spacing={3}>
           {(instances ?? [])
             .filter((instance) => instance)
@@ -423,7 +406,7 @@ const Dashboard = () => {
 
 
 
-        {/* ?? Row 4: Cloud Cover Vs Electricity Generation */}
+        {/* 🔹 Row 4: Cloud Cover Vs Electricity Generation */}
         <Grid container spacing={3}>
           {(instances ?? [])
             .filter((instance) => instance)
@@ -434,7 +417,7 @@ const Dashboard = () => {
               </Grid>
             ))}
         </Grid>
-        {/* ?? Row 5: Electricity Generation */}
+        {/* 🔹 Row 5: Electricity Generation */}
         <Grid container spacing={3}>
           {(instances ?? [])
             .filter((instance) => instance)
@@ -456,14 +439,14 @@ const Dashboard = () => {
 
 };
 
-// ?? Extracted current Weather Instance Card Component
+// 🏡 Extracted current Weather Instance Card Component
 const CurrentWeatherInstanceCard = ({ instanceData, instanceDataMap, lineBarChartData, index }) => {
-  console.log("?? Received Props:", { instanceData, instanceDataMap, lineBarChartData });
+  console.log("🔍 Received Props:", { instanceData, instanceDataMap, lineBarChartData });
 
   const lineInstanceChartData = instanceData ? lineBarChartData?.[instanceData.instanceId] : null;
 
 
-  console.log(`?? Line Data for Instance ${instanceData?.instanceId}:`, lineInstanceChartData);
+  console.log(`🟢 Line Data for Instance ${instanceData?.instanceId}:`, lineInstanceChartData);
   return (
     <Card
       sx={{
@@ -495,10 +478,10 @@ const CurrentWeatherInstanceCard = ({ instanceData, instanceDataMap, lineBarChar
   );
 };
 
-// ?? Extracted Line Instance Card Component
+// 🏡 Extracted Line Instance Card Component
 const LineInstanceCard = ({ instanceData, lineBarChartData, index }) => {
   const lineInstanceChartData = instanceData ? lineBarChartData?.[instanceData.instanceId] : null;
-  console.log(`?? Line Data for Instance ${instanceData?.instanceId}:`, lineInstanceChartData);
+  console.log(`🟢 Line Data for Instance ${instanceData?.instanceId}:`, lineInstanceChartData);
   return (
     <Card
       sx={{
@@ -516,7 +499,7 @@ const LineInstanceCard = ({ instanceData, lineBarChartData, index }) => {
 
         {instanceData ? (
           <>
-            {/* ?? Temperature vs Demand Chart Here */}
+            {/* 🔥 Temperature vs Demand Chart Here */}
             {lineInstanceChartData ? (
               <TemperatureVsDemandChart data={lineInstanceChartData} />
             ) : (
@@ -534,11 +517,11 @@ const LineInstanceCard = ({ instanceData, lineBarChartData, index }) => {
 };
 
 
-// ?? Extracted Wind Instance Card Component
+// 🏡 Extracted Wind Instance Card Component
 const WindInstanceCard = ({ instanceData, windChartData, index }) => {
   const windInstanceChartData = instanceData ? windChartData[instanceData.instanceId] : null;
 
-  console.log(`?? Wind Data for Instance ${instanceData?.instanceId}:`, windInstanceChartData);
+  console.log(`🟢 Wind Data for Instance ${instanceData?.instanceId}:`, windInstanceChartData);
 
   return (
     <Card
@@ -557,7 +540,7 @@ const WindInstanceCard = ({ instanceData, windChartData, index }) => {
 
         {instanceData ? (
           <>
-            {/* ?? Wind vs Electricity Generation Chart Here */}
+            {/* 🔥 Wind vs Electricity Generation Chart Here */}
             {windInstanceChartData ? (
               <WindGenerationChart data={windInstanceChartData} />
             ) : (
@@ -574,12 +557,12 @@ const WindInstanceCard = ({ instanceData, windChartData, index }) => {
   );
 };
 
-// ?? Extracted Solar Instance Card Component
+// 🏡 Extracted Solar Instance Card Component
 const SolarInstanceCard = ({ instanceData, solarChartData, index }) => {
 
   const solarInstanceChartData = instanceData ? solarChartData[instanceData.instanceId] : null;
 
-  console.log(`?? Solar Data for Instance ${instanceData?.instanceId}:`, solarInstanceChartData);
+  console.log(`🟢 Solar Data for Instance ${instanceData?.instanceId}:`, solarInstanceChartData);
 
   return (
     <Card
@@ -598,7 +581,7 @@ const SolarInstanceCard = ({ instanceData, solarChartData, index }) => {
 
         {instanceData ? (
           <>
-            {/* ?? Wind vs Electricity Generation Chart Here */}
+            {/* 🔥 Wind vs Electricity Generation Chart Here */}
             {solarInstanceChartData ? (
               <SolarGenerationChart data={solarInstanceChartData} />
             ) : (
@@ -615,14 +598,14 @@ const SolarInstanceCard = ({ instanceData, solarChartData, index }) => {
   );
 };
 
-// ?? Extracted All Fuel Instance Card Component
+// 🏡 Extracted All Fuel Instance Card Component
 const AllFuelInstanceCard = ({ instanceData, allFuelChartData, index }) => {
 
   const allFuelInstanceChartData = instanceData ? allFuelChartData?.[instanceData.instanceId] ?? [] : [];
 
   // const allFuelInstanceChartData = instanceData?.instanceId ? allFuelChartData?.[instanceData.instanceId] ?? []
   //   : [];
-  console.log(`?? All Fuel Type Data for Instance ${instanceData?.instanceId}:`, allFuelInstanceChartData);
+  console.log(`🟢 All Fuel Type Data for Instance ${instanceData?.instanceId}:`, allFuelInstanceChartData);
 
   return (
     <Card
@@ -641,7 +624,7 @@ const AllFuelInstanceCard = ({ instanceData, allFuelChartData, index }) => {
 
         {instanceData ? (
           <>
-            {/* ??   Electricity Generation Chart Here */}
+            {/* 🔥   Electricity Generation Chart Here */}
             {allFuelInstanceChartData.length > 0 ? (
               <AllFuelGenerationChart data={allFuelInstanceChartData} />
             ) : (
